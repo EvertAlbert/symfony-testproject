@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply bg-neutral-800;
+    @apply text-white;
+    font-family: 'Bebas Neue', cursive;
+}
+
+h1 {
+    font-size: 4rem;
+    margin-left: 1rem;
+}
+
+p {
+    @apply font-sans
+}
+
+.homepage__header {
+    @apply text-white;
+    overflow: hidden;
+    position: relative;
+    height: 50rem;
+}
+
+.homepage__header-background {
+    opacity: 0.3;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: auto;
+}
+
+.homepage__header-content {
+    position: relative;
+    font-size: 1.1rem;
+
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 5rem 2rem 40rem 2rem;
+
+
+    nav {
+        display: flex;
+        justify-content: flex-end;
+        margin-right: 5rem;
+
+        a {
+            margin-left: 5rem;
+        }
+
+        a:hover {
+            border-bottom: solid 2px;
+        }
+    }
+}
+
+.homepage__introduction {
+    margin-top: 13rem;
+    margin-left: 7rem;
+
+    h2 {
+        font-size: 5rem;
+    }
+
+    p {
+        margin-bottom: 1.5rem;
+    }
+    .button {
+        padding: 1rem;
+        @apply bg-lime-800;
+        border-radius: 1rem;
+    }
+
+    .button:hover {
+        .button_text {
+            border-bottom: solid 2px;
+        }
+    }
+}
+
+.homepage__discover-more {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.homepage__discover-more:hover {
+    border-bottom: solid 2px;
+    cursor: pointer;
+}
+
+h2 {
+    margin-top: 5rem;
+    font-size: 3rem;
+    text-align: center;
+}
+
+.photos__event-title {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    margin-left: 1rem;
+}
+
+.photos__grid {
+
+}

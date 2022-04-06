@@ -5,3 +5,19 @@ controllers:
 kernel:
     resource: ../src/Kernel.php
     type: annotation
+
+home:
+    path: /
+    controller: App\Controller\HomeController::indexAction
+
+calendar:
+    path: /calendar
+    controller: App\Controller\CalendarController::indexAction
+
+photos:
+    path: /photos
+    controller: App\Controller\PhotoController::indexAction
+
+team:
+    path: /team
+    controller: App\Controller\TeamController::indexAction

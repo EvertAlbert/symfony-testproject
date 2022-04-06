@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <header class="homepage__header">
+        <img src="{{ asset('/build/images/skull.jpg') }}" class="homepage__header-background"/>
+        <div class="homepage__header-content">
+            <h1 class="Logo"><a href="{{ path('home') }}">Preatoria Nausica</a></h1>
+
+            <nav>
+                <a href="{{ path('home') }}">Home</a>
+                <a href="{{ path('calendar') }}">Calendar</a>
+                <a href="{{ path('photos') }}">Photos</a>
+                <a href="{{ path('team') }}">Team</a>
+            </nav>
+
+            <div class="homepage__introduction">
+                <h2>Welcome!</h2>
+                <p>
+                    Get to know our team, see upcoming events and check out pictures of our past event<br/>
+                    Want to join us in upcoming events?
+                </p>
+
+                <a class="button" href="#">
+                    <span class="button_text">Join Preatoria Nausica</span>
+                </a>
+            </div>
+
+            <span class="homepage__discover-more">Discover more</span>
+        </div>
+    </header>
+{% endblock %}

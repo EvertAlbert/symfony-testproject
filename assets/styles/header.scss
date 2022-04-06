@@ -1,0 +1,17 @@
+.detail-page__header {
+  width: 100%;
+
+  nav {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 5rem;
+
+    a {
+      margin-left: 5rem;
+    }
+
+    a:hover {
+      border-bottom: solid 2px;
+    }
+  }
+}
