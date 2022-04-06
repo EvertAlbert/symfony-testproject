@@ -40,4 +40,9 @@ class CalendarController extends AbstractController
             'events' => $events,
         ]);
     }
+
+    public function registerAction()
+    {
+        //todo add registration functionality for event (after login? + mail notification about registration)
+    }
 }
