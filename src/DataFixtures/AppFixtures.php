@@ -27,8 +27,7 @@ class AppFixtures extends Fixture
     public function runGroupActivityFixtures()
     {
         for ($i = 0; $i < 5; $i++) {
-            $event = new GroupActivity();
-            $event
+            $event = (new GroupActivity())
                 ->setName(sprintf('testevent %s', $i))
                 ->setStartDate(Carbon::tomorrow())
                 ->setEndDate(Carbon::tomorrow())

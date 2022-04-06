@@ -1,0 +1,8 @@
+{% extends 'email/email-base.html.twig' %}
+
+{% block body %}
+    <p>
+        A user registered for {{ event.name }}.<br/>
+        See you on {{ event.startDate|date("d/m/Y") }}!
+    </p>
+{% endblock %}

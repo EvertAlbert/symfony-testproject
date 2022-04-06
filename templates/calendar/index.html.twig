@@ -20,7 +20,7 @@
                     {% endif %}
 
                     <span class="event-register-zone">
-                        <a href="#" class="register-button">Register</a>
+                        <a href="{{ path('calendar.register', {eventId: event.id }) }}" class="register-button">Register</a>
                     </span>
                 </li>
             {% endfor %}
