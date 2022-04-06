@@ -1,8 +1,17 @@
 {% extends 'email/email-base.html.twig' %}
 
+{% block title %}
+    Preatoria Nausicaa - Registered for {{ event.name }}
+{% endblock %}
+
 {% block body %}
-    <p>
-        A user registered for {{ event.name }}.<br/>
+    <h1 class="text-center">Registerd for {{ event.name }}!</h1>
+    <p class="block">
+        Thank you for registering to {{ event.name }}. We have been notified about your interest in this event and will
+        contact you with further information regarding this event.
+        <br/>
+        <br/>
         See you on {{ event.startDate|date("d/m/Y") }}!
     </p>
+
 {% endblock %}
