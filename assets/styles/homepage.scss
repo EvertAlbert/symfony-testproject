@@ -2,15 +2,17 @@
   @apply text-white;
   overflow: hidden;
   position: relative;
-  height: 50rem;
+  height: 45rem;
 }
 
 .homepage__header-background {
+  /* skull.jpg is 960x640 - 50x75 - 45x67.5 */
   opacity: 0.3;
   position: absolute;
   left: 0;
   width: 100%;
-  height: auto;
+  min-width: 67.5rem;
+  min-height: 45rem;
 }
 
 .homepage__header-content {
@@ -19,7 +21,7 @@
 
   display: grid;
   grid-template-columns: auto;
-  grid-template-rows: 5rem 2rem 40rem 2rem;
+  grid-template-rows: 5rem 2rem 35rem 2rem;
 
 
   nav {
