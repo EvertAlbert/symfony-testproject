@@ -9,6 +9,7 @@
 import './styles/app.scss';
 import './styles/homepage.scss';
 import './styles/header.scss';
+import './styles/footer.scss';
 import './styles/calendar.scss';
 
 // start the Stimulus application
