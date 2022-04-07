@@ -8,4 +8,26 @@
     {% include "header.html.twig" %}
     <h3>Team</h3>
 
+    <div class="team__main-content">
+        <ul class="member-list">
+            {% for teamMember in teamMembers %}
+                <li>
+                    <h4>
+                        {{ teamMember.firstName }}
+                        {% if teamMember.lastName %}
+                            {{ teamMember.lastName }}
+                        {% endif %}
+                        {% if teamMember.callName %}
+                            - {{ teamMember.callName }}
+                        {% endif %}
+                    </h4>
+                    <img src="{{ asset(teamMember.photo) }}" alt="photo of {{ teamMember.firstName }}" />
+                    <div class="member_description">
+                        {% if teamMember.weaponOfChoice %}<div>Weapon - {{ teamMember.weaponOfChoice }}</div>{% endif %}
+                        {% if teamMember.birthday %}<div>Birthday - {{ teamMember.birthday }}</div>{% endif %}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}
