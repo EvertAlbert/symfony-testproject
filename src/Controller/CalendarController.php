@@ -2,27 +2,20 @@
 
 namespace App\Controller;
 
-use App\Entity\GroupActivity;
 use App\Repository\GroupActivityRepository;
-use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use App\Service\ConfirmationEmailSender;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
-use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Address;
 
 class CalendarController extends AbstractController
 {
     private GroupActivityRepository $groupActivityRepository;
-    private MailerInterface $mailer;
 
-    public function __construct(
-        GroupActivityRepository $groupActivityRepository,
-        MailerInterface $mailer,
-    ) {
+    public function __construct(GroupActivityRepository $groupActivityRepository)
+    {
         $this->groupActivityRepository = $groupActivityRepository;
-        $this->mailer = $mailer;
     }
 
     /**
@@ -30,19 +23,24 @@ class CalendarController extends AbstractController
      */
     public function indexAction(): Response
     {
-        $events = $this->groupActivityRepository->findAll();
+        $groupActivities = $this->groupActivityRepository->findAll();
 
         return $this->render('calendar/index.html.twig', [
-            'events' => $events,
+            'groupActivities' => $groupActivities,
         ]);
     }
 
-    public function registerAction(int $eventId): RedirectResponse
+    /**
+     * @param int $groupActivityId
+     * @param ConfirmationEmailSender $confirmationEmailSender
+     * @return RedirectResponse
+     */
+    public function registerAction(int $groupActivityId, ConfirmationEmailSender $confirmationEmailSender): RedirectResponse
     {
         //todo implement users on the website / implement a registration form with name & email
         $user = new Address('evert.albert@hotmail.be', 'Evert');
 
-        $groupActivity = $this->groupActivityRepository->find($eventId);
+        $groupActivity = $this->groupActivityRepository->find($groupActivityId);
         if (!$groupActivity) {
             $this->addFlash(
                 'warning',
@@ -51,31 +49,12 @@ class CalendarController extends AbstractController
             return $this->redirectToRoute('calendar');
         }
 
-        $this->sendEventRegistrationConfirmation($user, $groupActivity);
+        $confirmationEmailSender->sendGroupActivityRegistrationConfirmation($user, $groupActivity);
         $this->addFlash(
             'success',
             sprintf('Registered for %s, please check your email.', $groupActivity->getName())
         );
 
         return $this->redirectToRoute('calendar');
-    }
-
-    private function sendEventRegistrationConfirmation(Address $user, GroupActivity $groupActivity)
-    {
-        $groupActivityName = $groupActivity->getName();
-
-        $email = (new TemplatedEmail())
-            ->to($user)
-            ->subject(sprintf('Registration for %s', $groupActivityName))
-            ->htmlTemplate('email/event/registration.html.twig')
-            ->context([
-                'event' => $groupActivity
-            ]);
-
-        try {
-            $this->mailer->send($email);
-        } catch (TransportExceptionInterface $e) {
-            //todo catch this exception
-        }
     }
 }

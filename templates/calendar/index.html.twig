@@ -10,17 +10,17 @@
 
     <div class="calendar__main-content">
         <ul class="event-list">
-            {% for event in events %}
+            {% for groupActivity in groupActivities %}
                 <li>
-                    <h4 class="event-title">{{ event.name }} - {{ event.startDate|date("d/m/Y") }}</h4>
-                    {% if event.description %}
-                        <p>{{ event.description }}</p>
+                    <h4 class="event-title">{{ groupActivity.name }} - {{ groupActivity.startDate|date("d/m/Y") }}</h4>
+                    {% if groupActivity.description %}
+                        <p>{{ groupActivity.description }}</p>
                     {% else %}
                         <p>No description</p>
                     {% endif %}
 
                     <span class="event-register-zone">
-                        <a href="{{ path('calendar.register', {eventId: event.id }) }}" class="register-button">Register</a>
+                        <a href="{{ path('calendar.register', {groupActivityId: groupActivity.id }) }}" class="register-button">Register</a>
                     </span>
                 </li>
             {% endfor %}

@@ -15,7 +15,7 @@ calendar:
     controller: App\Controller\CalendarController::indexAction
 
 calendar.register:
-    path: /calendar/register/{eventId}
+    path: /calendar/register/{groupActivityId}
     controller: App\Controller\CalendarController::registerAction
 
 photos:
