@@ -6,12 +6,7 @@
         <div class="homepage__header-content">
             <h1 class="Logo"><a href="{{ path('home') }}">Praetoria Nausicaa</a></h1>
 
-            <nav>
-                <a href="{{ path('home') }}">Home</a>
-                <a href="{{ path('calendar') }}">Calendar</a>
-                <a href="{{ path('photos') }}">Photos</a>
-                <a href="{{ path('team') }}">Team</a>
-            </nav>
+            {% include "header_nav.html.twig" %}
 
             <div class="homepage__introduction">
                 <h2>Welcome!</h2>
@@ -20,7 +15,7 @@
                     Want to join us and get involved with the team?
                 </p>
 
-                <a class="button" href="#">
+                <a class="button" href="{{ path('join') }}">
                     <span class="button_text join-button">Join Praetoria</span>
                 </a>
             </div>

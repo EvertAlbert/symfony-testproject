@@ -1,10 +1,5 @@
 <header class="detail-page__header">
     <h1 class="Logo"><a href="{{ path('home') }}">Praetoria Nausicaa</a></h1>
 
-    <nav>
-        <a href="{{ path('home') }}">Home</a>
-        <a href="{{ path('calendar') }}">Calendar</a>
-        <a href="{{ path('photos') }}">Photos</a>
-        <a href="{{ path('team') }}">Team</a>
-    </nav>
+    {% include "header_nav.html.twig" %}
 </header>

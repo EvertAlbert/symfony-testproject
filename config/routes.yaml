@@ -25,3 +25,7 @@ photos:
 team:
     path: /team
     controller: App\Controller\TeamController::indexAction
+
+join:
+    path: /join
+    controller: App\Controller\JoinController::indexAction
