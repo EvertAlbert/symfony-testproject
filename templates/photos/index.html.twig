@@ -8,4 +8,9 @@
     {% include "header.html.twig" %}
     <h3>Photos</h3>
 
+    <form method="POST" action="{{ path("photos.upload") }}" enctype="multipart/form-data">
+        <input type="file" name="image">
+        <button type="submit">Upload</button>
+    </form>
+
 {% endblock %}
