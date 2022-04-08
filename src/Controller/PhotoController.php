@@ -2,11 +2,11 @@
 
 namespace App\Controller;
 
+use Gedmo\Sluggable\Util\Urlizer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 
 class PhotoController extends AbstractController
 {
@@ -15,7 +15,16 @@ class PhotoController extends AbstractController
      */
     public function indexAction(): Response
     {
-        return $this->render('photos/index.html.twig', []);
+        $photoAlbums = ['albums go here', 'and here'];
+
+        return $this->render('photos/index.html.twig', [
+            'photoAlbums' => $photoAlbums,
+        ]);
+    }
+
+    public function createAlbumAction()
+    {
+
     }
 
     public function temporaryUploadAction(Request $request)
@@ -25,7 +34,7 @@ class PhotoController extends AbstractController
         $destination = $this->getParameter('kernel.project_dir').'/public/uploads';
 
         $originalFileName = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
-        $newFileName = $originalFileName . '-' . uniqid() . '-' . $uploadedFile->guessExtension();
+        $newFileName = Urlizer::urlize($originalFileName) . '-' . uniqid() . '.' . $uploadedFile->guessExtension();
         dd($uploadedFile->move(
             $destination,
             $newFileName,
