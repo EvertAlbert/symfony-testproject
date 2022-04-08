@@ -1,22 +1,25 @@
 .team__main-content {
-  width: 100%;
+  margin-left: 5rem;
+  margin-right: 5rem;
 
   .member-list {
     display: flex;
-    justify-content: space-around;
     flex-wrap: wrap;
     font-size: 1.5rem;
 
     li {
-      width: 20rem;
+      width: 18rem;
       display: grid;
       grid-template-rows: 3rem 20rem;
-      margin: 2.5rem;
+      margin-left: 1rem;
+      margin-right: 1rem;
+      margin-bottom: 2rem;
+
     }
 
     img {
-      width: 20rem;
-      height: 20rem;
+      width: 18rem;
+      height: 18rem;
       object-fit: cover;
     }
 

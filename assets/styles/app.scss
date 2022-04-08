@@ -4,6 +4,7 @@
 
 html {
     height: 100%;
+    font-size: 16px;
 }
 
 body {
@@ -21,6 +22,7 @@ footer {
 }
 
 h1 {
+    font-weight: bold;
     font-size: 4rem;
     margin-left: 1rem;
 }
@@ -37,8 +39,21 @@ h3 {
     text-align: center;
 }
 
+h4 {
+    font-size: 2rem;
+    font-weight: bolder;
+}
+
 p {
     @apply font-sans;
+}
+
+b {
+    font-weight: bold;
+}
+
+article {
+    margin-bottom: 5rem;
 }
 
 .flash-message {

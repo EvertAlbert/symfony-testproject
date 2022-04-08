@@ -45,6 +45,16 @@ class GroupActivityRepository extends ServiceEntityRepository
         }
     }
 
+    public function findClosestUpcomingActivity(): ?GroupActivity
+    {
+        return $this->createQueryBuilder('group_activity')
+            ->orderBy('group_activity.startDate', 'ASC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
     // /**
     //  * @return GroupActivity[] Returns an array of GroupActivity objects
     //  */

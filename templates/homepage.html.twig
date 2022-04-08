@@ -23,4 +23,27 @@
             <span class="homepage__discover-more">Discover more</span>
         </div>
     </header>
+
+    <main>
+        {% if closestGroupActivity is defined %}
+        <article class="next-event-block">
+            <h3 class="next-event-title">Next event</h3>
+            <section class="next-event-content">
+                <h4>{{ closestGroupActivity.name }} ({{ closestGroupActivity.startDate|date("d/m/Y") }}{% if closestGroupActivity.endDate is defined %} - {{ closestGroupActivity.endDate|date("d/m/Y") }}{% endif %})</h4>
+                <p>
+                    {{ closestGroupActivity.description }}<br/>
+                    <a href="{{ path('calendar.register', {groupActivityId: closestGroupActivity.id }) }}" class="register-button">Register</a>
+                </p>
+            </section>
+        </article>
+        {% endif %}
+        {% if latestAlbum is defined %}
+        <article class="latest-photo-block">
+            <h4 class="latest-photo-title">Latest photos</h4>
+            <section class="latest-photo-content">
+                {{ latestAlbum }}
+            </section>
+        </article>
+        {% endif %}
+    </main>
 {% endblock %}

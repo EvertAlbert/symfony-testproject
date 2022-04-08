@@ -12,7 +12,7 @@
         <ul class="event-list">
             {% for groupActivity in groupActivities %}
                 <li>
-                    <h4 class="event-title">{{ groupActivity.name }} - {{ groupActivity.startDate|date("d/m/Y") }}</h4>
+                    <h4 class="event-title">{{ groupActivity.name }} ({{ groupActivity.startDate|date("d/m/Y") }}{% if groupActivity.endDate is defined %} - {{ groupActivity.endDate|date("d/m/Y") }}{% endif %})</h4>
                     {% if groupActivity.description %}
                         <p>{{ groupActivity.description }}</p>
                     {% else %}

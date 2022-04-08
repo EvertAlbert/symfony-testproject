@@ -75,3 +75,16 @@
   cursor: pointer;
   transform: translateY(10px);
 }
+
+main {
+  margin-left: 5rem;
+  margin-right: 5rem;
+
+  h3 {
+    margin-bottom: 2rem !important;
+  }
+
+  .next-event-title {
+    text-align: start;
+  }
+}
