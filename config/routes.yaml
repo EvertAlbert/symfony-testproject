@@ -28,6 +28,10 @@ photos:
     path: /photos
     controller: App\Controller\PhotoController::indexAction
 
+photos.create_album:
+    path: /photos/create_album
+    controller: App\Controller\PhotoController::createAlbumAction
+
 photos.upload:
     path: /photos/upload
     controller: App\Controller\PhotoController::temporaryUploadAction
