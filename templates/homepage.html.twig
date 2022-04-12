@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <header class="homepage__header">
+        <img src="{{ asset('/build/images/skull.jpg') }}" class="homepage__header-background"/>
+        <div class="homepage__header-content">
+            <h1 class="Logo"><a href="{{ path('home') }}">Praetoria Nausicaa</a></h1>
+
+            {% include "header_nav.html.twig" %}
+
+            <div class="homepage__introduction">
+                <h2>Welcome!</h2>
+                <p>
+                    Get to know our team, see upcoming events and check out pictures from our past event<br/>
+                    Want to join us and get involved with the team?
+                </p>
+
+                <a class="button" href="{{ path('join') }}">
+                    <span class="button_text join-button">Join Praetoria</span>
+                </a>
+            </div>
+
+            <span class="homepage__discover-more">Discover more</span>
+        </div>
+    </header>
+
+    <main>
+        {% if closestGroupActivity is defined %}
+        <article class="next-event-block">
+            <h3 class="next-event-title">Next event</h3>
+            <section class="next-event-content">
+                <h4>{{ closestGroupActivity.name }} ({{ closestGroupActivity.startDate|date("d/m/Y") }}{% if closestGroupActivity.endDate is defined %} - {{ closestGroupActivity.endDate|date("d/m/Y") }}{% endif %})</h4>
+                <p>
+                    {{ closestGroupActivity.description }}<br/>
+                    <a href="{{ path('calendar.register', {groupActivityId: closestGroupActivity.id }) }}" class="register-button">Register</a>
+                </p>
+            </section>
+        </article>
+        {% endif %}
+        {% if latestAlbum is defined %}
+        <article class="latest-photo-block">
+            <h4 class="latest-photo-title">Latest photos</h4>
+            <section class="latest-photo-content">
+                {{ latestAlbum }}
+            </section>
+        </article>
+        {% endif %}
+    </main>
+{% endblock %}

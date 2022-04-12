@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Calendar
+{% endblock %}
+
+{% block body %}
+    {% include "header.html.twig" %}
+    <h3>Upcoming Events</h3>
+
+    <div class="calendar__main-content">
+        <ul class="event-list">
+            {% for groupActivity in groupActivities %}
+                <li>
+                    <h4 class="event-title">{{ groupActivity.name }} ({{ groupActivity.startDate|date("d/m/Y") }}{% if groupActivity.endDate is defined %} - {{ groupActivity.endDate|date("d/m/Y") }}{% endif %})</h4>
+                    {% if groupActivity.description %}
+                        <p>{{ groupActivity.description }}</p>
+                    {% else %}
+                        <p>No description</p>
+                    {% endif %}
+
+                    <span class="event-register-zone">
+                        <a href="{{ path('calendar.register', {groupActivityId: groupActivity.id }) }}" class="register-button">Register</a>
+                    </span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+{% endblock %}

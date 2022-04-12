@@ -1,0 +1,17 @@
+{% extends 'email/email-base.html.twig' %}
+
+{% block title %}
+    Praetoria Nausicaa - Registered for {{ groupActivity.name }}
+{% endblock %}
+
+{% block body %}
+    <h1 class="text-center">Registerd for {{ groupActivity.name }}!</h1>
+    <p class="block">
+        Thank you for registering to {{ groupActivity.name }}. We have been notified about your interest in this event and will
+        contact you with further information regarding this event.
+        <br/>
+        <br/>
+        See you on {{ groupActivity.startDate|date("d/m/Y") }}!
+    </p>
+
+{% endblock %}

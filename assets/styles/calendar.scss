@@ -1,0 +1,40 @@
+.calendar__main-content {
+  width: 100%;
+
+  .event-content {
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .event-list {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 40rem;
+
+    li {
+      border-bottom: solid 1px;
+      display: grid;
+      grid-template-rows: 3rem 5rem 3rem;
+    }
+  }
+
+  .event-title {
+    font-size: 1.5rem;
+    padding-top: .5rem;
+  }
+
+  .event-register-zone {
+    position: relative;
+    width: 100%;
+  }
+
+  .register-button {
+    font-size: 1.1rem;
+    position: absolute;
+    right: 0;
+  }
+
+  .register-button:hover {
+    border-bottom: solid 2px;
+  }
+}

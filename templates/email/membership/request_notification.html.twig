@@ -1,0 +1,21 @@
+{% extends 'email/email-base.html.twig' %}
+
+{% block title %}
+    {{ membershipRequest.firstName }} {{ membershipRequest.lastName }} would like to join Praetoria Nausicaa
+{% endblock %}
+
+{% block body %}
+    <h1 class="text-center">{{ membershipRequest.firstName }} {{ membershipRequest.lastName }} would like to join Praetoria Nausicaa</h1>
+    <p class="block">
+        {{ membershipRequest.firstName }} {{ membershipRequest.lastName }} would like to join Praetoria Nausicaa.
+        <br/>
+        <br/>
+        email: {{ membershipRequest.email }}
+        <br/>
+        <br/>
+        message: {{ membershipRequest.extra }}
+        <br/>
+        <br/>
+    </p>
+
+{% endblock %}

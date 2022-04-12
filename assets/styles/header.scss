@@ -1,0 +1,21 @@
+.detail-page__header {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 5rem 2rem;
+
+  nav {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 5rem;
+    font-size: 1.5rem;
+
+    a {
+      margin-left: 4rem;
+    }
+
+    a:hover {
+      border-bottom: solid 2px;
+    }
+  }
+}

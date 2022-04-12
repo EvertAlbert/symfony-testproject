@@ -1,0 +1,40 @@
+<!doctype html>
+{% apply inline_css(source('@styles/email.css')) %}
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>{% block title %}Praetoria Nausicaa Notification{% endblock %}</title>
+    <style>
+
+    </style>
+</head>
+<body>
+<div class="body">
+    <div class="container">
+        <div class="header text-center">
+            <a href="{{ url('home') }}">
+                <img src="{{ absolute_url(asset('build/images/logo-no-bg.png')) }}" alt="praetoria nausicaa logo"/>
+{#                <img src="{{ email.image('@images/email/logo-no-bg.png') }}" alt="praetoria nausicaa logo"/>#}
+            </a>
+        </div>
+        <div class="content">
+            {% block body %}{% endblock %}
+        </div>
+        <div class="footer">
+            <p class="block">
+                Greetings,<br><br>
+                <em>Praetoria Nausicaa</em>
+            </p>
+            <p class="block text-center">
+                <a href="{{ url('home') }}">Visit the Praetoria Nausicaa website</a>
+            </p>
+            <p class="block bottom text-center">
+                Email sent by Praetoria Nausicaa.
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+{% endapply %}

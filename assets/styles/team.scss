@@ -1,0 +1,32 @@
+.team__main-content {
+  margin-left: 5rem;
+  margin-right: 5rem;
+
+  .member-list {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 1.5rem;
+
+    li {
+      width: 18rem;
+      display: grid;
+      grid-template-rows: 3rem 20rem;
+      margin-left: 1rem;
+      margin-right: 1rem;
+      margin-bottom: 2rem;
+
+    }
+
+    img {
+      width: 18rem;
+      height: 18rem;
+      object-fit: cover;
+    }
+
+    .member_description {
+      padding-top: 1rem;
+      font-size: 1.1rem;
+      margin-bottom: -1rem;
+    }
+  }
+}

@@ -5,3 +5,41 @@ controllers:
 kernel:
     resource: ../src/Kernel.php
     type: annotation
+
+###################### Home #######################
+
+home:
+    path: /
+    controller: App\Controller\HomeController::indexAction
+
+###################### Calendar #######################
+
+calendar:
+    path: /calendar
+    controller: App\Controller\CalendarController::indexAction
+
+calendar.register:
+    path: /calendar/register/{groupActivityId}
+    controller: App\Controller\CalendarController::registerAction
+
+###################### Photos #######################
+
+photos:
+    path: /photos
+    controller: App\Controller\PhotoController::indexAction
+
+photos.upload:
+    path: /photos/upload
+    controller: App\Controller\PhotoController::temporaryUploadAction
+
+###################### Team #######################
+
+team:
+    path: /team
+    controller: App\Controller\TeamController::indexAction
+
+###################### Join #######################
+
+join:
+    path: /join
+    controller: App\Controller\JoinController::indexAction
