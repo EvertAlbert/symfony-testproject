@@ -1,0 +1,42 @@
+.membership-request-form {
+  max-width: 40rem;
+  margin-left: auto;
+  margin-right: auto;
+
+  #membership_request > div {
+    padding-bottom: 1rem;
+    display: grid;
+    grid-template-columns: 5rem auto;
+
+    label {
+      padding-right: 1rem;
+      display: flex;
+      align-items: center;
+    }
+
+    input {
+      @apply text-neutral-800;
+      @apply font-sans;
+      padding: .2rem
+    }
+
+    textarea {
+      @apply text-neutral-800;
+      @apply font-sans;
+      padding: .2rem
+    }
+  }
+
+  .submit-area {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+  }
+
+  .submit-button {
+    padding: 1rem 1.5rem;
+    @apply bg-lime-800;
+    border-radius: .5rem;
+  }
+}

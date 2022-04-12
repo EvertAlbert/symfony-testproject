@@ -8,4 +8,13 @@
     {% include "header.html.twig" %}
     <h3>Join</h3>
 
+    <div class="membership-request-form">
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+        <div class="submit-area">
+            <button type="submit" class="submit-button">Request membership</button>
+        </div>
+        {{ form_end(form) }}
+    </div>
+
 {% endblock %}
