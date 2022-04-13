@@ -14,12 +14,13 @@ use Symfony\Component\HttpFoundation\Response;
 class JoinController extends AbstractController
 {
     /**
+     * @param Request $request
+     * @param EntityManagerInterface $entityManager
      * @return Response
      */
     public function indexAction(
         Request $request,
-        MembershipRequestRepository $membershipRequestRepository,
-        EntityManagerInterface $entityManager
+        MembershipRequestRepository $membershipRequestRepository
     ): Response {
         $membershipRequest = (new MembershipRequest())
             ->setCreatedAt(Carbon::now()->toDateTimeImmutable())
@@ -31,13 +32,11 @@ class JoinController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $membershipRequest = $form->getData();
+            $membershipRequestRepository->add($membershipRequest);
             $form = $this->createForm(
                 MembershipRequestType::class,
                 (new MembershipRequest())
             );
-
-            $entityManager->persist($membershipRequest);
-            $entityManager->flush();
 
             /** @var MembershipRequest $membershipRequest */
             $this->addFlash(

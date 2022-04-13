@@ -10,15 +10,23 @@ kernel:
 
 admin:
     path: /admin
-    controller: App\Controller\AdminController::indexAction
+    controller: App\Controller\Admin\AdminController::indexAction
 
 admin.membership_request.approve:
-    path: /admin/membership-request/{id}/approve
-    controller: App\Controller\AdminController::approveMembershipRequest
+    path: /admin/membership-request/{membershipRequest}/approve
+    controller: App\Controller\Admin\AdminController::approveMembershipRequest
 
 admin.membership_request.deny:
-    path: /admin/membership-request/{id}/deny
-    controller: App\Controller\AdminController::denyMembershipRequest
+    path: /admin/membership-request/{membershipRequest}/deny
+    controller: App\Controller\Admin\AdminController::denyMembershipRequest
+
+admin.group_activity.confirm:
+    path: /admin/group-activity/{groupActivity}/confirm
+    controller: App\Controller\Admin\CalendarAdminController::indexAction
+
+admin.group_activity.remove:
+    path: /admin/group-activity/{groupActivity}/remove
+    controller: App\Controller\Admin\CalendarAdminController::removeGroupActivity
 
 ###################### Home #######################
 

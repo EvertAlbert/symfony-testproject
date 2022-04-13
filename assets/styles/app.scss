@@ -72,3 +72,14 @@ article {
     @apply text-neutral-800;
     border-radius: .5rem;
 }
+
+.submit-button {
+    padding: 1rem 1.5rem;
+    @apply bg-lime-800;
+    border-radius: .5rem;
+}
+
+.submit-button:hover {
+    @apply bg-neutral-100;
+    @apply text-lime-800;
+}
