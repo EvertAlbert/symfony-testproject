@@ -1,0 +1,19 @@
+{% extends 'email/email-base.html.twig' %}
+
+{% block title %}
+    Request for Praetoriaa Nausicaa approved!
+{% endblock %}
+
+{% block body %}
+    <h1 class="text-center">Request approved!</h1>
+    <p class="block">
+        Welcome {{ membershipRequest.firstName }}!
+        <br/>
+        <br/>
+        Your request to join Praetoria Nausicaa was approved.
+        Keep an eye on your inbox, we will get in contact with you regarding your membership in the coming days.<br/>
+        <br/>
+        You can now register for events through the website at <a href="{{ url('calendar') }}">{{ url('calendar') }}</a><br/>
+    </p>
+
+{% endblock %}

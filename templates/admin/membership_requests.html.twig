@@ -1,0 +1,45 @@
+<h2>Latest join requests</h2>
+<table class="membership-request-overview">
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>email</th>
+        <th>extra message</th>
+        <th>requested</th>
+        <th>actions</th>
+    </tr>
+    {% for membershipRequest in membershipRequests %}
+        <tr>
+            <td>{{ membershipRequest.id }}</td>
+            <td>{{ membershipRequest.firstName }} {{ membershipRequest.lastName }}</td>
+            <td>{{ membershipRequest.email }}</td>
+            <td>{{ membershipRequest.extra }}</td>
+            <td>{{ membershipRequest.createdAt|date("d/m/Y h:i") }}</td>
+            <td class="membership-request-actions">
+                <a href="{{ path('admin.membership_request.approve', {'id': membershipRequest.id}) }}">&check;</a>
+                <a href="{{ path('admin.membership_request.deny', {'id': membershipRequest.id}) }}">&times;</a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+<br/>
+<table class="membership-request-overview">
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>email</th>
+        <th>extra message</th>
+        <th>requested</th>
+        <th>approved</th>
+    </tr>
+    {% for membershipRequest in approvedMembershipRequests %}
+        <tr>
+            <td>{{ membershipRequest.id }}</td>
+            <td>{{ membershipRequest.firstName }} {{ membershipRequest.lastName }}</td>
+            <td>{{ membershipRequest.email }}</td>
+            <td>{{ membershipRequest.extra }}</td>
+            <td>{{ membershipRequest.createdAt|date("d/m/Y h:i") }}</td>
+            <td>{{ membershipRequest.approvedAt|date("d/m/Y h:i") }}</td>
+        </tr>
+    {% endfor %}
+</table>

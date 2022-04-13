@@ -1,0 +1,36 @@
+.admin {
+  margin-left: 5rem;
+  margin-right: 5rem;
+
+  h2 {
+    text-align: start !important;
+  }
+
+  article {
+    border-bottom: solid 1px;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .membership-request-overview {
+    width: 100%;
+
+    .membership-request-actions {
+      font-size: 2rem;
+    }
+
+    th {
+      text-align: start !important;
+      font-weight: bold;
+      @apply bg-neutral-500;
+    }
+
+    td {
+      @apply font-sans
+    }
+
+    tr:hover {
+      @apply bg-neutral-500;
+    }
+  }
+}

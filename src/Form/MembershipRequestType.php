@@ -20,6 +20,7 @@ class MembershipRequestType extends AbstractType
             ->add('email', EmailType::class)
             ->add('extra', TextareaType::class, [
                 'required' => false,
+                'label' => 'Message (optional)'
             ])
         ;
     }

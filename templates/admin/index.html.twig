@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1><a href="{{ path('home') }}">Praetoria Nausicaa</a> - Admin</h1>
+    <hr>
+    <div class="admin">
+        <article id="membership-admin">
+            {% include 'admin/membership_requests.html.twig' %}
+        </article>
+        <article id="calendar-admin">
+            {% include 'admin/calendar.html.twig' %}
+        </article>
+        <article id="photo-admin">
+            {% include 'admin/photo.html.twig' %}
+        </article>
+        <article id="team-admin">
+            {% include 'admin/team.html.twig' %}
+        </article>
+        <article id="user-admin">
+            {% include 'admin/user_management.html.twig' %}
+        </article>
+    </div>
+{% endblock %}

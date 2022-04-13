@@ -6,6 +6,20 @@ kernel:
     resource: ../src/Kernel.php
     type: annotation
 
+###################### Admin #######################
+
+admin:
+    path: /admin
+    controller: App\Controller\AdminController::indexAction
+
+admin.membership_request.approve:
+    path: /admin/membership-request/{id}/approve
+    controller: App\Controller\AdminController::approveMembershipRequest
+
+admin.membership_request.deny:
+    path: /admin/membership-request/{id}/deny
+    controller: App\Controller\AdminController::denyMembershipRequest
+
 ###################### Home #######################
 
 home:

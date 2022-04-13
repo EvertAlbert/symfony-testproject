@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\MembershipRequest;
 use App\Form\MembershipRequestType;
 use App\Repository\MembershipRequestRepository;
+use Carbon\Carbon;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,14 +21,20 @@ class JoinController extends AbstractController
         MembershipRequestRepository $membershipRequestRepository,
         EntityManagerInterface $entityManager
     ): Response {
-        $membershipRequest = new MembershipRequest();
+        $membershipRequest = (new MembershipRequest())
+            ->setCreatedAt(Carbon::now()->toDateTimeImmutable())
+            ->setUpdatedAt(Carbon::now()->toDateTimeImmutable())
+        ;
 
         $form = $this->createForm(MembershipRequestType::class, $membershipRequest);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $membershipRequest = $form->getData();
-            $form = $this->createForm(MembershipRequestType::class, new MembershipRequest());
+            $form = $this->createForm(
+                MembershipRequestType::class,
+                (new MembershipRequest())
+            );
 
             $entityManager->persist($membershipRequest);
             $entityManager->flush();
