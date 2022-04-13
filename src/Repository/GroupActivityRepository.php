@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\GroupActivity;
+use Carbon\Carbon;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
@@ -47,11 +48,27 @@ class GroupActivityRepository extends ServiceEntityRepository
 
     public function findClosestUpcomingActivity(): ?GroupActivity
     {
-        return $this->createQueryBuilder('group_activity')
-            ->orderBy('group_activity.startDate', 'ASC')
+        return $this->createQueryBuilder('g')
+            ->orderBy('g.startDate', 'DESC')
+            ->where('g.startDate >= :today')
+            ->orWhere('g.endDate >= :today')
+            ->setParameter('today', new \DateTime('today midnight'))
             ->setMaxResults(1)
             ->getQuery()
             ->getOneOrNullResult()
+        ;
+    }
+
+    public function getGroupActivityDescending()
+    {
+        return $this->createQueryBuilder('g')
+            ->where('g.startDate >= :today')
+            ->orWhere('g.endDate >= :today')
+            ->setParameter('today', new \DateTime('today midnight'))
+            ->orderBy('g.startDate', 'DESC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
         ;
     }
 

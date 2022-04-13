@@ -45,22 +45,35 @@ class MembershipRequestRepository extends ServiceEntityRepository
         }
     }
 
-    // /**
-    //  * @return MembershipRequest[] Returns an array of MembershipRequest objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return MembershipRequest[] Returns an array of MembershipRequest objects
+     */
+    public function getPendingRequests(): array
     {
         return $this->createQueryBuilder('m')
-            ->andWhere('m.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('m.id', 'ASC')
+            ->andWhere('m.approvedAt is null')
+            ->andWhere('m.removedAt is null')
+            ->orderBy('m.createdAt', 'DESC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    /**
+    * @return MembershipRequest[] Returns an array of MembershipRequest objects
+    */
+    public function getApprovedRequests(): array
+    {
+        return $this->createQueryBuilder('m')
+            ->andWhere('m.approvedAt is not null')
+            ->andWhere('m.removedAt is null')
+            ->orderBy('m.createdAt', 'DESC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?MembershipRequest

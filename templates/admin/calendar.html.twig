@@ -1,0 +1,41 @@
+<h2>Calendar</h2>
+
+<div class="calendar-admin-content">
+    <div class="group-activity-form">
+        {{ form_start(groupActivityForm) }}
+        {{ form_widget(groupActivityForm) }}
+        <div class="submit-area">
+            <button type="submit" class="submit-button">Create event</button>
+        </div>
+        {{ form_end(groupActivityForm) }}
+    </div>
+    <table class="group-activity-table">
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>start</th>
+            <th>end</th>
+            <th>description</th>
+            <th>actions</th>
+        </tr>
+        {% for groupActivity in groupActivities %}
+            <tr>
+                <td>{{ groupActivity.id }}</td>
+                <td>{{ groupActivity.name }}</td>
+                <td>{{ groupActivity.startDate|date("d/m/Y h:i") }}</td>
+                <td>
+                    {% if groupActivity.endDate %}
+                        {{ groupActivity.endDate|date("d/m/Y h:i") }}
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+                <td>{{ groupActivity.description }}</td>
+                <td class="table-actions">
+                    <a href="{{ path('admin.group_activity.confirm', {'groupActivity': groupActivity.id}) }}">&times;</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+

@@ -22,10 +22,6 @@
                         {% endif %}
                     </h4>
                     <img src="{{ asset(teamMember.photo) }}" alt="photo of {{ teamMember.firstName }}" />
-                    <div class="member_description">
-                        {% if teamMember.weaponOfChoice %}<div>Weapon - {{ teamMember.weaponOfChoice }}</div>{% endif %}
-                        {% if teamMember.birthday %}<div>Birthday - {{ teamMember.birthday }}</div>{% endif %}
-                    </div>
                 </li>
             {% endfor %}
         </ul>

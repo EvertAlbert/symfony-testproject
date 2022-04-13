@@ -13,7 +13,6 @@ class HomeController extends AbstractController
 
     public function __construct(GroupActivityRepository $groupActivityRepository)
     {
-
         $this->groupActivityRepository = $groupActivityRepository;
     }
 

@@ -51,18 +51,6 @@
   p {
     margin-bottom: 1.5rem;
   }
-
-  .button {
-    padding: 1rem 1.5rem;
-    @apply bg-lime-800;
-    border-radius: .5rem;
-  }
-
-  .button:hover {
-    .button_text {
-      border-bottom: solid 2px;
-    }
-  }
 }
 
 .homepage__discover-more {
