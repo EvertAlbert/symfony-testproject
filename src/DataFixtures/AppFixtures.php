@@ -4,8 +4,10 @@ namespace App\DataFixtures;
 
 use App\Entity\GroupActivity;
 use App\Entity\TeamMember;
+use App\Entity\User;
 use App\Repository\GroupActivityRepository;
 use App\Repository\TeamMemberRepository;
+use App\Repository\UserRepository;
 use Carbon\Carbon;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -14,19 +16,23 @@ class AppFixtures extends Fixture
 {
     private GroupActivityRepository $groupActivityRepository;
     private TeamMemberRepository $teamMemberRepository;
+    private UserRepository $userRepository;
 
     public function __construct(
         GroupActivityRepository $groupActivityRepository,
         TeamMemberRepository $teamMemberRepository,
+        UserRepository $userRepository,
     ) {
         $this->groupActivityRepository = $groupActivityRepository;
         $this->teamMemberRepository = $teamMemberRepository;
+        $this->userRepository = $userRepository;
     }
 
     public function load(ObjectManager $manager): void
     {
         $this->runGroupActivityFixtures();
         $this->runTeamMemberFixtures();
+        $this->runUserFixtures();
 
         $manager->flush();
     }
@@ -80,6 +86,28 @@ class AppFixtures extends Fixture
 
         foreach ($members as $member) {
             $this->teamMemberRepository->add($member);
+        }
+    }
+
+    public function runUserFixtures(): void
+    {
+        $user = (new User())
+            ->setFirstName('Evert')
+            ->setLastName('Albert')
+            ->setEmail('evert.albert@hotmail.be')
+            ->setRoles([])
+            ->setPassword('test')
+        ;
+        $this->userRepository->add($user);
+
+
+        for ($i = 0; $i < 5; $i++) {
+            $newUser = (new User())
+                ->setEmail(sprintf('user%s@test.com', $i))
+                ->setRoles([])
+                ->setPassword('test')
+            ;
+            $this->userRepository->add($newUser);
         }
     }
 }

@@ -30,6 +30,12 @@ admin.group_activity.remove:
 
 ###################### Home #######################
 
+login:
+    path: /login
+    controller: \App\Controller\SecurityController::login
+
+###################### Home #######################
+
 home:
     path: /
     controller: App\Controller\HomeController::indexAction
