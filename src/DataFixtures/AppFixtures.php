@@ -11,21 +11,25 @@ use App\Repository\UserRepository;
 use Carbon\Carbon;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AppFixtures extends Fixture
 {
     private GroupActivityRepository $groupActivityRepository;
     private TeamMemberRepository $teamMemberRepository;
     private UserRepository $userRepository;
+    private UserPasswordHasherInterface $passwordHasher;
 
     public function __construct(
         GroupActivityRepository $groupActivityRepository,
         TeamMemberRepository $teamMemberRepository,
         UserRepository $userRepository,
+        UserPasswordHasherInterface $passwordHasher,
     ) {
         $this->groupActivityRepository = $groupActivityRepository;
         $this->teamMemberRepository = $teamMemberRepository;
         $this->userRepository = $userRepository;
+        $this->passwordHasher = $passwordHasher;
     }
 
     public function load(ObjectManager $manager): void
@@ -96,8 +100,15 @@ class AppFixtures extends Fixture
             ->setLastName('Albert')
             ->setEmail('evert.albert@hotmail.be')
             ->setRoles([])
-            ->setPassword('test')
+            ->setPlainPassword('sdfsdf')
         ;
+
+        if ($user->getPlainPassword()) {
+            $user->setPassword(
+                $this->passwordHasher->hashPassword($user, $user->getPlainPassword())
+            );
+        }
+
         $this->userRepository->add($user);
 
 
@@ -105,8 +116,15 @@ class AppFixtures extends Fixture
             $newUser = (new User())
                 ->setEmail(sprintf('user%s@test.com', $i))
                 ->setRoles([])
-                ->setPassword('test')
+                ->setPlainPassword('sdfsdf')
             ;
+
+            if ($newUser->getPlainPassword()) {
+                $newUser->setPassword(
+                    $this->passwordHasher->hashPassword($newUser, $newUser->getPlainPassword())
+                );
+            }
+
             $this->userRepository->add($newUser);
         }
     }
