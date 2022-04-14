@@ -28,6 +28,14 @@ admin.group_activity.remove:
     path: /admin/group-activity/{groupActivity}/remove
     controller: App\Controller\Admin\CalendarAdminController::removeGroupActivity
 
+admin.create_album:
+    path: /admin/create-album
+    controller: App\Controller\Admin\PhotoAdminController::createAlbumAction
+
+admin.photos.upload:
+    path: /admin/photos/upload
+    controller: App\Controller\Admin\PhotoAdminController::temporaryUploadAction
+
 ###################### Home #######################
 
 login:
@@ -59,14 +67,6 @@ calendar.register:
 photos:
     path: /photos
     controller: App\Controller\PhotoController::indexAction
-
-photos.create_album:
-    path: /photos/create_album
-    controller: App\Controller\PhotoController::createAlbumAction
-
-photos.upload:
-    path: /photos/upload
-    controller: App\Controller\PhotoController::temporaryUploadAction
 
 ###################### Team #######################
 

@@ -1,8 +1,12 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+    Remove {{ groupActivity.name }}
+{% endblock %}
+
 {% block body %}
-    <h1><a href="{{ path('home') }}">Praetoria Nausicaa</a> - Admin</h1>
-    <hr>
+    {% include "admin/components/admin_header.html.twig" %}
+
     <div class="remove-prompt">
         <p>Remove <b>{{ groupActivity.name }}</b>?</p>
         <br/>
