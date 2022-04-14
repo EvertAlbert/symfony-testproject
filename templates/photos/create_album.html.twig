@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Create Album
+{% endblock %}
+
+{% block body %}
+    {% include "header.html.twig" %}
+    <h3>Create Album</h3>
+
+    {{ form(form) }}
+
+    <br/>
+    <br/>
+
+    <form method="POST" action="{{ path("photos.upload") }}" enctype="multipart/form-data">
+        <input type="file" name="image">
+        <button type="submit">Upload</button>
+    </form>
+{% endblock %}
