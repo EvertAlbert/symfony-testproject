@@ -59,13 +59,15 @@ article {
 input {
     @apply text-neutral-800;
     @apply font-sans;
-    padding: .2rem
+    padding: .2rem;
+    border-radius: .3rem;
 }
 
 textarea {
     @apply text-neutral-800;
     @apply font-sans;
-    padding: .2rem
+    padding: .2rem;
+    border-radius: .3rem;
 }
 
 .flash-message {
@@ -82,17 +84,21 @@ textarea {
     font-size: 1.1rem;
     @apply bg-neutral-100;
     @apply text-neutral-800;
-    border-radius: .5rem;
+    border-radius: .3rem;
 }
 
 .submit-button {
     padding: 1rem 1.5rem;
     @apply bg-lime-800;
-    border-radius: .5rem;
+    border-radius: .3rem;
     text-align: center;
 }
 
 .submit-button:hover {
     @apply bg-neutral-100;
     @apply text-lime-800;
+}
+
+.thin-font {
+    font-weight: lighter;
 }
