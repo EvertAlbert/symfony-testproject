@@ -13,18 +13,6 @@
       display: flex;
       align-items: center;
     }
-
-    input {
-      @apply text-neutral-800;
-      @apply font-sans;
-      padding: .2rem
-    }
-
-    textarea {
-      @apply text-neutral-800;
-      @apply font-sans;
-      padding: .2rem
-    }
   }
 
   .submit-area {

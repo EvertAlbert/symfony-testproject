@@ -1,0 +1,43 @@
+.login-content {
+  width: 30rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .login-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .submit-button {
+      width: 13rem;
+      align-self: center;
+    }
+
+    input {
+      padding: .7rem;
+      margin-bottom: 2rem;
+    }
+  }
+
+  .register-button {
+    margin-top: 2rem;
+  }
+
+  .register-button:hover {
+    align-self: center;
+    text-decoration: underline;
+  }
+
+  .login-error {
+    @apply text-red-500;
+    margin-bottom: 1rem;
+  }
+
+  .login-submit-zone {
+    display: flex;
+    justify-content: space-between;
+  }
+}
