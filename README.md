@@ -1,5 +1,8 @@
 # symfony-testproject
-project for testing symfony 5 stuff
+
+php bin/console doctrine:database:create
+php bin/console doctrine:migration:migrate (--all-or-nothing=0)
+php bin/console doctrine:fixtures:load
 
 # built with dockerwest/symfony
 ## env config for dockerwest
