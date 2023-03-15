@@ -1,0 +1,109 @@
+.admin {
+  margin-left: 5rem;
+  margin-right: 5rem;
+
+  h2 {
+    text-align: start !important;
+  }
+
+  article {
+    border-bottom: solid 1px;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .table-actions {
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  th {
+    text-align: start !important;
+    font-weight: bold;
+    @apply bg-neutral-500;
+  }
+
+  td {
+    @apply font-sans
+  }
+
+  tr:hover {
+    @apply bg-neutral-500;
+  }
+
+  .membership-request-overview {
+    width: 100%;
+  }
+
+  .calendar-admin-content {
+    display: grid;
+    grid-template-rows: auto auto;
+
+    .group-activity-form {
+      margin-bottom:2rem;
+      width: 40rem;
+      margin-left: auto;
+      margin-right: auto;
+
+      #group_activity > div {
+        padding-bottom: 1rem;
+        display: grid;
+        grid-template-columns: 5rem auto;
+
+        select {
+          @apply text-neutral-800;
+          @apply bg-neutral-100;
+          @apply font-sans;
+          padding: .2rem
+        }
+      }
+
+      .submit-area {
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+
+    .group-activity-table {
+      width: 100%;
+    }
+  }
+}
+
+.remove-prompt {
+  width: 30rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5rem;
+  text-align: center;
+
+  .options {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .remove-button {
+    padding: 1rem 1.5rem;
+    @apply bg-red-800;
+    border-radius: .5rem;
+  }
+
+  .remove-button:hover {
+    @apply bg-neutral-100;
+    @apply text-red-800;
+  }
+
+  .cancel-button {
+    padding: 1rem 1.5rem;
+    @apply bg-neutral-600;
+    border-radius: .5rem;
+  }
+
+  .cancel-button:hover {
+    @apply bg-neutral-100;
+    @apply text-neutral-800;
+  }
+}

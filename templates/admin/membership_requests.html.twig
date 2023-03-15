@@ -1,0 +1,49 @@
+<h2>Membership requests overview</h2>
+{% if membershipRequests %}
+    <table class="membership-request-overview">
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>email</th>
+            <th>extra message</th>
+            <th>requested</th>
+            <th>actions</th>
+        </tr>
+        {% for membershipRequest in membershipRequests %}
+            <tr>
+                <td>{{ membershipRequest.id }}</td>
+                <td>{{ membershipRequest.firstName }} {{ membershipRequest.lastName }}</td>
+                <td>{{ membershipRequest.email }}</td>
+                <td>{{ membershipRequest.extra }}</td>
+                <td>{{ membershipRequest.createdAt|date("d/m/Y h:i") }}</td>
+                <td class="table-actions">
+                    <a href="{{ path('admin.membership_request.approve', {'membershipRequest': membershipRequest.id}) }}">&check;</a>
+                    <a href="{{ path('admin.membership_request.deny', {'membershipRequest': membershipRequest.id}) }}">&times;</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+{% if approvedMembershipRequests %}
+    <br/>
+    <table class="membership-request-overview">
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>email</th>
+            <th>extra message</th>
+            <th>requested</th>
+            <th>approved</th>
+        </tr>
+        {% for membershipRequest in approvedMembershipRequests %}
+            <tr>
+                <td>{{ membershipRequest.id }}</td>
+                <td>{{ membershipRequest.firstName }} {{ membershipRequest.lastName }}</td>
+                <td>{{ membershipRequest.email }}</td>
+                <td>{{ membershipRequest.extra }}</td>
+                <td>{{ membershipRequest.createdAt|date("d/m/Y h:i") }}</td>
+                <td>{{ membershipRequest.approvedAt|date("d/m/Y h:i") }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}

@@ -23,7 +23,7 @@ class CalendarController extends AbstractController
      */
     public function indexAction(): Response
     {
-        $groupActivities = $this->groupActivityRepository->findAll();
+        $groupActivities = $this->groupActivityRepository->getGroupActivityDescending();
 
         return $this->render('calendar/index.html.twig', [
             'groupActivities' => $groupActivities,

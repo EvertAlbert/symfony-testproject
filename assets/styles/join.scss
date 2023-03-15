@@ -13,18 +13,6 @@
       display: flex;
       align-items: center;
     }
-
-    input {
-      @apply text-neutral-800;
-      @apply font-sans;
-      padding: .2rem
-    }
-
-    textarea {
-      @apply text-neutral-800;
-      @apply font-sans;
-      padding: .2rem
-    }
   }
 
   .submit-area {
@@ -32,11 +20,5 @@
     display: flex;
     justify-content: flex-end;
     margin-top: 1rem;
-  }
-
-  .submit-button {
-    padding: 1rem 1.5rem;
-    @apply bg-lime-800;
-    border-radius: .5rem;
   }
 }

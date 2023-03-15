@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\PhotoAlbum;
+use Carbon\Carbon;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
@@ -43,6 +44,13 @@ class PhotoAlbumRepository extends ServiceEntityRepository
         if ($flush) {
             $this->_em->flush();
         }
+    }
+
+    public function initiateAlbum(): PhotoAlbum
+    {
+        return (new PhotoAlbum())
+            ->setCreatedAt(Carbon::now()->toDateTimeImmutable())
+            ->setUpdatedAt(Carbon::now()->toDateTimeImmutable());
     }
 
     // /**

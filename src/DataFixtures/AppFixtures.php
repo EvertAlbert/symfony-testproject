@@ -4,29 +4,39 @@ namespace App\DataFixtures;
 
 use App\Entity\GroupActivity;
 use App\Entity\TeamMember;
+use App\Entity\User;
 use App\Repository\GroupActivityRepository;
 use App\Repository\TeamMemberRepository;
+use App\Repository\UserRepository;
 use Carbon\Carbon;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AppFixtures extends Fixture
 {
     private GroupActivityRepository $groupActivityRepository;
     private TeamMemberRepository $teamMemberRepository;
+    private UserRepository $userRepository;
+    private UserPasswordHasherInterface $passwordHasher;
 
     public function __construct(
         GroupActivityRepository $groupActivityRepository,
         TeamMemberRepository $teamMemberRepository,
+        UserRepository $userRepository,
+        UserPasswordHasherInterface $passwordHasher,
     ) {
         $this->groupActivityRepository = $groupActivityRepository;
         $this->teamMemberRepository = $teamMemberRepository;
+        $this->userRepository = $userRepository;
+        $this->passwordHasher = $passwordHasher;
     }
 
     public function load(ObjectManager $manager): void
     {
         $this->runGroupActivityFixtures();
         $this->runTeamMemberFixtures();
+        $this->runUserFixtures();
 
         $manager->flush();
     }
@@ -80,6 +90,42 @@ class AppFixtures extends Fixture
 
         foreach ($members as $member) {
             $this->teamMemberRepository->add($member);
+        }
+    }
+
+    public function runUserFixtures(): void
+    {
+        $user = (new User())
+            ->setFirstName('Evert')
+            ->setLastName('Albert')
+            ->setEmail('evert.albert@hotmail.be')
+            ->setRoles([])
+            ->setPlainPassword('sdfsdf')
+        ;
+
+        if ($user->getPlainPassword()) {
+            $user->setPassword(
+                $this->passwordHasher->hashPassword($user, $user->getPlainPassword())
+            );
+        }
+
+        $this->userRepository->add($user);
+
+
+        for ($i = 0; $i < 5; $i++) {
+            $newUser = (new User())
+                ->setEmail(sprintf('user%s@test.com', $i))
+                ->setRoles([])
+                ->setPlainPassword('sdfsdf')
+            ;
+
+            if ($newUser->getPlainPassword()) {
+                $newUser->setPassword(
+                    $this->passwordHasher->hashPassword($newUser, $newUser->getPlainPassword())
+                );
+            }
+
+            $this->userRepository->add($newUser);
         }
     }
 }

@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Remove {{ groupActivity.name }}
+{% endblock %}
+
+{% block body %}
+    {% include "admin/components/admin_header.html.twig" %}
+
+    <div class="remove-prompt">
+        <p>Remove <b>{{ groupActivity.name }}</b>?</p>
+        <br/>
+        <p>
+            <b>{{ groupActivity.name }}</b>
+            <br/>
+            {{ groupActivity.startDate|date("d/m/Y h:i") }}
+            {% if groupActivity.endDate %}
+                - {{ groupActivity.endDate|date("d/m/Y h:i") }}
+            {% endif %}
+            <br/>
+            {% if groupActivity.description %}
+                {{ groupActivity.description }}
+            {% endif %}
+        </p>
+
+        <p class="options">
+            <a href="{{ path('admin.group_activity.remove', {'groupActivity': groupActivity.id}) }}" class="remove-button">Remove</a>
+            <a href="{{ path('admin') }}#calendar-admin" class="cancel-button">Cancel</a>
+        </p>
+    </div>
+{% endblock %}

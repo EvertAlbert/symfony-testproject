@@ -2,6 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\PhotoAlbum;
+use App\Form\PhotoAlbumType;
+use App\Repository\PhotoAlbumRepository;
+use Carbon\Carbon;
 use Gedmo\Sluggable\Util\Urlizer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -10,34 +14,23 @@ use Symfony\Component\HttpFoundation\Response;
 
 class PhotoController extends AbstractController
 {
+    private PhotoAlbumRepository $albumRepository;
+
+    public function __construct(PhotoAlbumRepository $albumRepository)
+    {
+
+        $this->albumRepository = $albumRepository;
+    }
+
     /**
      * @return Response
      */
     public function indexAction(): Response
     {
-        $photoAlbums = ['albums go here', 'and here'];
+        $photoAlbums = $this->albumRepository->findAll();
 
         return $this->render('photos/index.html.twig', [
             'photoAlbums' => $photoAlbums,
         ]);
-    }
-
-    public function createAlbumAction()
-    {
-
-    }
-
-    public function temporaryUploadAction(Request $request)
-    {
-        /** @var UploadedFile $uploadedFile */
-        $uploadedFile = $request->files->get('image');
-        $destination = $this->getParameter('kernel.project_dir').'/public/uploads';
-
-        $originalFileName = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
-        $newFileName = Urlizer::urlize($originalFileName) . '-' . uniqid() . '.' . $uploadedFile->guessExtension();
-        dd($uploadedFile->move(
-            $destination,
-            $newFileName,
-        ));
     }
 }

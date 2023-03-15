@@ -1,6 +1,13 @@
 .calendar__main-content {
   width: 100%;
 
+  .event-time {
+    font-size: 1.3rem;
+    padding-bottom: .5rem;
+    padding-left: 1rem;
+    font-weight: lighter;
+  }
+
   .event-content {
     padding-left: 1rem;
     padding-bottom: 1rem;
@@ -14,7 +21,7 @@
     li {
       border-bottom: solid 1px;
       display: grid;
-      grid-template-rows: 3rem 5rem 3rem;
+      grid-template-rows: auto auto auto 3rem;
     }
   }
 

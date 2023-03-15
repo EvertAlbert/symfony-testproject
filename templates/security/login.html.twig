@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block body %}
+    {% include "header.html.twig" %}
+    <h3>Login</h3>
+
+    <div class="login-content">
+        <form class="login-form" method="post">
+            {% if error %}
+                <p class="login-error">{{ error.messageKey|trans(error.messageData, 'security') }}</p>
+            {% endif %}
+
+            <label for="email">email</label>
+            <input type="text" name="email" id="email">
+
+            <label for="password">password</label>
+            <input type="password" id="password" name="password"/>
+
+            <div class="login-submit-zone">
+                <div>
+                    <input type="checkbox" name="_remember_me" id="remember_me" />
+                    <label for="remember_me">Remmember me</label>
+                </div>
+
+                <button type="submit" class="submit-button">Login</button>
+            </div>
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+        </form>
+    </div>
+
+{% endblock %}
