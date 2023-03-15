@@ -3,6 +3,7 @@
 php bin/console doctrine:database:create
 php bin/console doctrine:migration:migrate (--all-or-nothing=0)
 php bin/console doctrine:fixtures:load
+bs messenger:setup-transports
 
 # built with dockerwest/symfony
 ## env config for dockerwest
